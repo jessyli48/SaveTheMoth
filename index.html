@@ -417,9 +417,9 @@ footer{display:flex;justify-content:space-between;align-items:center;padding-blo
 
     <section class="panel hero" data-p="home" aria-labelledby="t0">
       <div class="hhead">
-        <span class="kick">A story told in wing dust · UK light traps, 1990–2018</span>
+        <span class="kick">A story told in wing dust</span>
         <h1 id="t0">Save the Moth<span>.</span></h1>
-        <p class="tagline">Britain’s city moths are vanishing. The causes are ours, and so are the fixes.</p>
+        <p class="tagline">Moths are vanishing. Explore how we caused their decline, why it matters, and how we can help them recover.</p>
       </div>
       <div class="hbody">
         <div class="chartslot" id="chartslot"><svg id="chart" role="img" aria-label="Line chart of moths per trap per year, 1990 to 2018. Urban traps fell from about 1,500 to 665 on trend; traps on other land from about 2,160 to 1,450."></svg></div>
@@ -429,13 +429,12 @@ footer{display:flex;justify-content:space-between;align-items:center;padding-blo
           <div class="n"><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="down"><path d="M12 4v16"/><path d="M5 13l7 7 7-7"/></svg>26%</b><span>fewer moths at <strong>non-urban</strong> sites</span></div>
         </div>
       </div>
-      <p class="dustnote"><i aria-hidden="true"><b style="width:3px;height:3px"></b><b style="width:5px;height:5px"></b><b style="width:7px;height:7px"></b></i>Every dot in this story is a speck of wing dust, the tiny scales that rub off a moth’s wings. As moths vanish, watch the dust fall away.</p>
-      <p class="src">190 UK light traps, 2,326 trap-years. Trends are within sites and allow for temperature and rainfall. The 41% and 26% figures define urban as the 20% most urban sites; with that definition both declines are statistically significant. The chart shows the original fitted trends.</p>
+      <p class="src">Data from Bourhis et al. (2022), using light trap data from the UK. Urban = top 20% of sites by land cover; non-urban = remaining 80%. Both trends control for temperature and rainfall (mixed-effects model, site as random effect) and are statistically significant (p&lt;0.001). </p>
     </section>
 
     <section class="panel" data-p="causes" aria-labelledby="t1">
       <h2 id="t1">Four choices, <em>one moth</em></h2>
-      <p>Each dark dot is one moth caught in a light trap in a year; pale dots are moths lost. Each wing belongs to one habit, and the more moths a habit costs, the emptier its wing. Options on the left help moths; options on the right harm them.</p>
+      <p>The moth is built from thousands of dots, each representing an individual moth. The four wings correspond to four pressures on moth populations: urbanization, light pollution, lawns and gardens, and pesticides. Change the controls to see the wings lose density and scales fall away as moths disappear from the environment.</p>
       <div class="sim" id="sim"></div>
       <p class="src" id="simsrc"></p>
     </section>
@@ -681,13 +680,13 @@ const svgIcon=k=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" str
 const GRID={"Low": [2231.4, 2196.7, 2162.4, 2128.4, 2094.8, 2061.6, 2028.7, 1996.1, 1963.9, 1932.1, 1900.6, 1869.4, 1838.6, 1808.1, 1778.0, 1748.2, 1718.8, 1689.6, 1660.8, 1632.4, 1604.2, 1576.4, 1548.9, 1521.7, 1494.9, 1468.3, 1442.1, 1416.2, 1390.6], "Medium": [2065.6, 2032.7, 2000.1, 1967.9, 1936.0, 1904.4, 1873.3, 1842.4, 1811.9, 1781.7, 1751.9, 1722.4, 1693.2, 1664.4, 1635.8, 1607.7, 1579.8, 1552.3, 1525.1, 1498.2, 1471.6, 1445.3, 1419.4, 1393.8, 1368.4, 1343.4, 1318.7, 1294.3, 1270.2], "High": [1679.8, 1651.1, 1622.7, 1594.7, 1567.0, 1539.6, 1512.6, 1485.8, 1459.4, 1433.3, 1407.5, 1382.0, 1356.8, 1331.9, 1307.4, 1283.1, 1259.2, 1235.5, 1212.1, 1189.1, 1166.3, 1143.8, 1121.6, 1099.7, 1078.1, 1056.8, 1035.8, 1015.0, 994.5]};
 const FAC=[
   {k:'urban',name:'Urbanisation',icon:'tree',side:-1,hw:false,def:1,opts:['Low','Medium','High'],tips:['Low built-up cover','Medium built-up cover','High built-up cover'],
-    info:'How much of the land around a trap is built over: roofs, roads and paving. More building means fewer plants for caterpillars and fewer places to shelter.',data:'Data: the modelled moth trend at low, medium and high built-up cover, from 190 UK light traps.'},
+    info:'How much of the land around a trap is built over: roofs, roads and paving. More building means fewer plants for caterpillars and fewer places to shelter.',data:'Data: Urban land cover modeled as a continuous variable (0%, 14% [dataset average], and 50%), from a single model controlling for temperature, rainfall, frost days, elevation, habitat heterogeneity, and all other land-cover types. From Bourhis et al. (2022)'},
   {k:'light',name:'Light pollution',icon:'bulb',side:1,hw:false,def:1,opts:['Low','Medium','High'],tips:['No change in night light','25% more light (interpolated)','50% more light (measured)'],m:[1,0.8135,0.627],
-    info:'Artificial light at night from street lamps, security lights and windows. It pulls moths away from feeding and mating, and lit hedges hold fewer caterpillars.',data:'Data: 50% more light leaves 63% of the moths (measured); 25% more leaves 81% (estimated in between).'},
+    info:'Artificial light at night from street lamps, security lights and windows. It pulls moths away from feeding and mating, and lit hedges hold fewer caterpillars.',data:'Based on DEFRA research project WC1057, "Understanding impacts of changes in artificial lighting regimes on moths." A 50% increase in night lighting reduced moth trap catches by 37.3% (mean baseline: 1,798 moths/garden). The medium setting is interpolated'},
   {k:'garden',name:'Lawns & gardens',icon:'grass',side:-1,hw:true,def:2,opts:['Wild garden','A few flowers','Plain lawn'],tips:['Diverse wildflower meadow with nectar and host plants','Grass with a few nectar flowers','Plain grass'],m:[1.4,1,1],
-    info:'How green spaces are kept. A short, plain lawn offers moths almost nothing; a wild patch of mixed native flowers feeds the adults and the caterpillars.',data:'Data: a diverse wildflower meadow held 1.4× the moths of plain lawn. A few nectar flowers alone made no difference.'},
+    info:'How green spaces are kept. A short, plain lawn offers moths almost nothing; a wild patch of mixed native flowers feeds the adults and the caterpillars.',data:'Data: Based on Blumgart et al. (2023), Journal of Insect Conservation. A diverse wildflower meadow (with larval host plants) increased moth abundance by up to 40% compared to plain grass. Adding only a few nectar flowers made no significant difference — the benefit came from host plants, not nectar alone.'},
   {k:'pest',name:'Pesticide',icon:'spray',side:1,hw:true,def:1,opts:['No pesticide','Pesticide'],tips:['Recently pesticide-free (under 6 years)','Conventional pesticide use'],m:[2.526,1],
-    info:'Insecticides and weedkillers used on gardens, parks and farmland. They kill caterpillars outright and remove the plants they feed on.',data:'Data: sites pesticide-free for under six years held 2.5× the moths of sites with conventional use.'}];
+    info:'Insecticides and weedkillers used on gardens, parks and farmland. They kill caterpillars outright and remove the plants they feed on.',data:'Based on Jonason et al. (2013), Basic and Applied Ecology. Newly pesticide-free farms (under 6 years) had 2.5x more moths than conventionally-farmed ones. The effect may fade over time, but with only 6 farms sampled per group, longer-term data was not conclusive.'}];
 const SIM={urban:1,light:1,garden:2,pest:1};
 const UKEY=['Low','Medium','High'];
 function simN(y,s=SIM){return GRID[UKEY[s.urban]][y]*FAC[1].m[s.light]*FAC[2].m[s.garden]*FAC[3].m[s.pest]}
@@ -1315,7 +1314,7 @@ const HEAT={2:[['#fdf0e8','#141412'],['#ff5b14','#fff']],3:[['#fdf0e8','#141412'
     b.addEventListener('focus',()=>showI(b));b.addEventListener('blur',hideI);b.addEventListener('click',e=>{e.stopPropagation();itOn===b&&it.classList.contains('on')?hideI():showI(b)})});
   addEventListener('pointerdown',e=>{if(itOn&&!e.target.closest('.info'))hideI()});addEventListener('keydown',e=>{if(e.key==='Escape')hideI()});
   $('stage').addEventListener('scroll',hideI,true);addEventListener('scroll',hideI,{passive:true});
-  $('simsrc').innerHTML=`How to read it: the whole moth is the best case, ${fmt(NDOTS)} moths per trap in 2018. The four habits multiply the modelled UK trend for built-up cover: night light ×0.81 or ×0.63, a wild garden ×1.4, going pesticide-free ×2.5. Tap <b>i</b> for each source. Effects are assumed to be independent.`})();
+  $('simsrc').innerHTML=`How to read it: Each black dot in the moth visual represents a moth, out of a total of 4918, which is the best-case scenario for 2018. In the graph, the dashed green line shows the best possible outcome; the dashed grey line, the worst. The solid orange line is what your current choices produce. Tap the i icons for sources. Effects of each choice are assumed to combine independently.`})();
 function syncSimOut(){let o=$('simout');if(!o)return;const n=simN(28),best=simN(28,BEST);o.innerHTML=`<b>${fmt(n)} moths</b><span>per trap in 2018, one dark dot each · ${Math.round(n/best*100)}% of the best case (${fmt(best)})</span>`}
 function wingTags(S){const mb=S.mb;let L='';
   S.Q.forEach((q,k)=>{const [wx,wy]=S.cen[k];const right=q.side>0;const d=document.createElement('div');d.className='wtag'+(right?' r':'');
