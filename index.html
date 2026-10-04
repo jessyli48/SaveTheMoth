@@ -1590,7 +1590,7 @@ function drawPoster(kind,sty){
   if('fontStretch' in c)c.fontStretch='normal';if('letterSpacing' in c)c.letterSpacing='0px';
   const gy=statY-(tall?70:52)*u;c.fillStyle=Z.ac;c.font=FD(600,tall?150:118);c.textAlign='right';c.fillText('−41%',PW-M,gy);
   c.fillStyle=Z.fg;c.font=F(500,tall?24:20);c.fillText('fewer moths at urban traps since 1990',PW-M,gy+(tall?38:30)*u);c.textAlign='left';
-  const st=[['bird','83–89%','of tit chicks’ food is caterpillars'],['bat','90%','of a barbastelle bat’s diet is moths'],['apple','1 in 7','fewer apples without night visitors']];
+  const st=[['bird','83–89%','of tit chicks’ food is caterpillars'],['bat','90%','of a barbastelle bat’s diet is moths'],['apple','3.5x','more fruit with night-time pollination']];
   const cw=(PW-2*M-2*24*u)/3;
   st.forEach(([ic,big,lab],k)=>{const x=M+k*(cw+24*u),y=statY+(tall?20:6)*u;c.fillStyle=Z.chip;c.beginPath();c.roundRect(x,y,cw,statH-(tall?30:16)*u,20*u);c.fill();
     drawIcon(c,ic,x+20*u,y+20*u,(tall?52:42)*u,Z.fg,2*u);c.fillStyle=Z.ac;c.font=FD(600,tall?58:46);c.fillText(big,x+20*u,y+(tall?140:112)*u);
@@ -1601,7 +1601,7 @@ function drawPoster(kind,sty){
     drawIcon(c,ic,x+8*u+sz*0.18,y+8*u+sz*0.18,sz*0.64,Z.fg,2.2*u);c.fillStyle=Z.fg;c.font=FD(600,tall?26:22);c.fillText(l,x,y+sz+(tall?56:48)*u)});
   c.fillStyle=Z.fg;c.fillRect(M,footY,PW-2*M,1.5*u);c.font=FD(700,22);c.fillText('Save the Moth.',M,footY+36*u);
   {const qs=(tall?150:118)*u,qx=PW-M-qs,qy=actY+20*u;drawQR(c,qx,qy,qs,'#111110','#ffffff');c.fillStyle=Z.mu;c.font=FM(12);c.textAlign='right';c.fillText('SCAN TO READ THE STORY',PW-M,qy+qs+20*u);c.textAlign='left'}
-  c.fillStyle=Z.mu;c.font=F(400,13);c.textAlign='right';wrapT(c,'Data: 190 UK light traps, 2,326 trap-years. Boyes 2021 · Sinkovics 2021 · Apoznański 2023 · Robertson 2021 · Macgregor 2019',PW-M,footY+30*u,PW-2*M-260*u,18*u);c.textAlign='left';
+  c.fillStyle=Z.mu;c.font=F(400,13);c.textAlign='right';wrapT(c,'Data: Bourhis et al. 2022 · Sinkovics et al. 2021 · Apoznański et al. 2023 · Macgregor et al. 2017',PW-M,footY+30*u,PW-2*M-260*u,18*u);c.textAlign='left';
   return cvp}
 const pimg=$('pimg'),psave=$('psave'),pshare=$('pshare'),pnote=$('pnote');
 async function renderPoster(){document.documentElement.style.setProperty('--navh',$('next').offsetHeight+'px');if(document.fonts){try{await Promise.all(['800 100px "Bricolage Grotesque"','500 20px Archivo','700 20px Archivo'].map(f=>document.fonts.load(f)))}catch(e){}await document.fonts.ready}
