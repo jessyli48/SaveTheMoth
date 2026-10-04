@@ -1479,7 +1479,7 @@ const SPEC=[
       x.fillStyle=gr(.45);x.beginPath();x.ellipse(760,240,20,10,-.3,0,6.3);x.fill()});
     x.fillStyle=gr(.62);x.beginPath();x.ellipse(500,380,54,120,0,0,6.3);x.fill();x.strokeStyle=gr(.4);x.lineWidth=5;for(let k=0;k<5;k++){x.beginPath();x.moveTo(456,330+k*30);x.quadraticCurveTo(500,342+k*30,544,330+k*30);x.stroke()}
     x.fillStyle=gr(.55);x.beginPath();x.ellipse(500,262,52,42,0,0,6.3);x.fill();ant(x,true,.75)}},
- {n:'Garden tiger',l:'Arctia caja',c:'Science',f:'Its bright hindwings warn birds that it tastes foul. Its tiger-moth relatives click back at hunting bats, and one American species even jams their sonar.',
+ {n:'Garden tiger',l:'Arctia caja',c:'Science',f:'Its bright hindwings warn birds that it tastes foul. Its tiger-moth relatives click back at hunting bats, and one American species, Bertholdia trigona, even jams their sonar.',
   d:x=>{const FW=[[505,250],[860,210],[845,330],[760,400],[530,392]],HW=[[505,360],[760,400],[725,530],[540,520]];
     mir(x,()=>{poly(x,HW,'rgb(255,110,40)');for(const [X,Y,r] of [[600,440,24],[690,430,20],[640,495,22],[560,500,16]]){x.fillStyle='rgb(30,55,200)';x.beginPath();x.arc(X,Y,r,0,6.3);x.fill();x.fillStyle=gr(.05);x.beginPath();x.arc(X,Y,r*.55,0,6.3);x.fill()}
       poly(x,FW,gr(.2));x.save();poly(x,FW);x.clip();x.strokeStyle=gr(.94);x.lineWidth=20;x.lineCap='round';for(const s of [[[540,280],[640,330],[600,390]],[[640,240],[700,300],[760,330],[700,390]],[[760,230],[790,290],[850,300]],[[560,350],[680,360]]]){x.beginPath();x.moveTo(...s[0]);for(const p of s.slice(1))x.lineTo(...p);x.stroke()}x.restore()});
@@ -1494,7 +1494,7 @@ const SPEC=[
   d:x=>{const FW=[[505,270],[870,300],[850,352],[570,372],[505,335]],HW=[[505,335],[700,350],[680,400],[520,400]];
     mir(x,()=>{poly(x,HW,gr(.8));poly(x,FW,gr(.5));speck(x,FW,30,.15,10);x.strokeStyle=gr(.15);x.lineWidth=8;x.beginPath();x.moveTo(600,290);x.lineTo(800,315);x.stroke()});
     bodyB(x,150,22,.4);ant(x,false,.6)}}];
-const QUOTES=[['Science','Moths don’t fly <em>to</em> lamps. They keep their backs to the brightest light, which traps them circling.','Fabian et al. 2024, Nature Communications'],
+const QUOTES=[['Science','Moths don’t simply fly <em>towards</em> lamps. They tilt their backs toward the brightest light, disrupting their natural flight control and trapping them in circles.','Fabian et al. 2024, Nature Communications'],
   ['Pop culture','Mothra, a giant moth goddess, first flew onto cinema screens in <em>1961</em> and later fought Godzilla.','Toho Studios'],
   ['Literature','Virginia Woolf watched a day-flying moth’s last struggle at her window and turned it into <em>“The Death of the Moth.”</em>','Essay, published 1942']];
 /* ---------- moth watch: a terrarium you photograph moths in ---------- */
@@ -1507,7 +1507,7 @@ const FIELD=[[55,'May–August','Woods, gardens and towns','Birch, oak, willow a
   [55,'July–August','Gardens, hedges and dunes','Nettles, docks and many low plants','UK resident'],
   [70,'April–May','Heaths and moorland','Heather and bramble','UK resident'],
   [35,'June–October','In and around beehives','Beeswax and old comb','UK resident']];
-const FINDINGS=[['o','−56%','Moths caught at UK city light traps, 1990 to 2018. Other land: −33%.'],['g','44 of 108','common moth species in the traps actually increased. Moths can bounce back.'],
+const FINDINGS=[['o','−56%','Moths caught at UK city light traps, 1990 to 2018. Other land: −33%.'],['g','Underwater','Some moth caterpillars live underwater, absorbing oxygen directly through their skin.'],
   ['b','2,500','kinds of moth live in Britain. Only 59 kinds of butterfly do.'],['o','“Scale wing”','is what Lepidoptera means in Greek. The dust on your fingers is wing scales.'],
   ['b','1959','The first animal pheromone ever identified, bombykol, came from the silk moth.'],['g','47','plant species had their pollen carried by moths on Norfolk farmland.']];
 const pepper1=x=>{const FW=[[505,250],[900,205],[870,410],[560,430],[505,330]],HW=[[505,330],[720,400],[690,520],[540,520],[505,440]];mir(x,()=>{poly(x,HW,gr(.8));poly(x,FW,gr(.84));speck(x,FW,110,.1,9);speck(x,HW,40,.2,7)});bodyB(x,170,28,.5);ant(x,true,.9)};
@@ -1534,8 +1534,13 @@ function closeCase(quiet){const c=$('case');if(!c.classList.contains('on'))retur
 
 
 /* ---------- moth facts ---------- */
+<<<<<<< HEAD
+const FACTS=[['2,500','kinds of moth in Britain, and just 59 butterflies.','Butterfly Conservation'],
+  ['Underwater','Some moth caterpillars live underwater, absorbing oxygen directly through their skin.','Natural History Museum'],
+=======
 const FACTS=[['2,500','kinds of moth in Britain, and just 60 butterflies.','Butterfly Conservation'],
   ['44 of 108','common species in the traps went up. Moths bounce back.','This story’s trap data'],
+>>>>>>> main
   ['“Scale wing”','is what Lepidoptera means. Wing dust is scales.','Greek lepis + pteron'],
   ['47','kinds of plant had pollen carried by Norfolk moths.','Macgregor et al. 2019']];
 const PHOTOS=(typeof MOTH_PHOTOS!=='undefined'?MOTH_PHOTOS:[]);
