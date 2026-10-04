@@ -1388,7 +1388,7 @@ function birdPhrase(v,t,vol){const R=v.seed;if(v.kind==='trill'){const n=8+Math.
   else{let tt=t;const n=3+Math.floor(R()*5);for(let k=0;k<n;k++){const f=v.base*(0.75+R()*0.6),d=0.05+R()*0.12;tone(tt,f,f*(0.55+R()*1.1),d,vol,v.pan);tt+=d+0.03+R()*0.05}}}
 function batClick(t,f,vol,pan){tone(t,f*1.6,f,0.009,vol,pan,'triangle')}
 function soundTick(){const c=SND.ctx;if(!c||!SND.on)return;const t=c.currentTime;
-  if(SND.kind==='bird'){const life=1+BIRD5[state.mc]/100;const active=Math.max(life>0.2?1:0,Math.round(BIRDS.length*Math.pow(life,3.0)));
+  if(SND.kind==='bird'){const life=1+BIRD5[state.mc]/100;const active=Math.max(life>0.2?1:0,Math.round(BIRDS.length*Math.pow(life,5.0)));
     BIRDS.forEach((v,k)=>{if(k>=active)return;if(t>=v.next){birdPhrase(v,t+0.05,0.03+0.06*life,v.pan);v.next=t+(0.5+v.seed()*1.7)/Math.max(.25,life)}})}
   if(SND.kind==='bat'){const life=1-state.mc/100*0.9;const n=Math.max(1,Math.round(3*life));
     for(let k=0;k<n;k++){const b=SND.bats[k]||(SND.bats[k]={next:0,pan:(k-1)*0.6,f:1400+k*350,buzz:0});
