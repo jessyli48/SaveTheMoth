@@ -43,6 +43,7 @@ nav button[aria-current] i{color:#a8a59c}
 .stage{position:relative;min-height:0}
 #dust,#lines{position:absolute;left:0;top:0;width:100%;pointer-events:none}
 #dust{z-index:1}#lines{z-index:2;overflow:visible}
+#lines { display: none !important; }
 #ann{position:absolute;inset:0;z-index:3;pointer-events:none}
 #ann>*{pointer-events:auto}
 .spacer{display:none}
@@ -434,7 +435,7 @@ footer{display:flex;justify-content:space-between;align-items:center;padding-blo
 
     <section class="panel" data-p="causes" aria-labelledby="t1">
       <h2 id="t1">Four choices, <em>one moth</em></h2>
-      <p>The moth is built from thousands of dots, each representing an individual moth. The four wings correspond to four pressures on moth populations: urbanization, light pollution, lawns and gardens, and pesticides. Change the controls to see the wings change density, and see how that impacts the population in the graph below.</p>
+      <p>The moth is built from thousands of dots, each representing an individual moth. Change the four main causes to see the population shift, and see how that impacts the trend in the graph below.</p>
       <div class="sim" id="sim"></div>
       <p class="src" id="simsrc"></p>
     </section>
