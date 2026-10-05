@@ -720,7 +720,7 @@ const ST={
    e:['The dawn chorus','Birds that rely on insects (like moths) as an essential food source have seen their population decline by almost 3 billion over the last 50 years. Across 200,000 sites in Europe and North America, the dawn chorus has grown quieter and less varied over 25 years as birds declined.'],
    src:'<a href="https://www.nature.com/articles/s41598-021-03504-4" target="_blank" rel="noopener">Sinkovics et al. 2021</a> · <a href="https://scottishwildlifetrust.org.uk/2017/06/know-blue-tit-chick-needs-around-100-caterpillars-every-day/" target="_blank" rel="noopener">Scottish Wildlife Trust</a> · <a href="https://www.nature.com/articles/s41467-021-26488-1" target="_blank" rel="noopener">Morrison et al. 2021</a> · <a href="https://academic.oup.com/condor/article/123/1/duaa059/6063623" target="_blank" rel="noopener">Tallamy and Shriver</a> · Moth–bird model based on <a href="https://onlinelibrary.wiley.com/doi/10.1111/ele.14362" target="_blank" rel="noopener">Evans et al. 2024</a> (project dataset, 5-year change)',r:v=>pct(BIRD5[v]),rl:'blue tits after 5 years',snd:1},
  b2:{g:'birds',n:'Flowers lose a pollinator',h:'Blue tits <em>pollinate</em> flowers too',ns:1,
-   p:'Blue tits sipping nectar can pollinate flowers, even in cases where bees fail',
+   p:'Blue tits sipping nectar can pollinate flowers, even in cases where bees fail.',
    s:'It was the first proven case of bird pollination in Europe. Fewer moths means fewer caterpillars to raise blue tits, and fewer blue tits to do this work.',
    src:'<a href="https://www.mdpi.com/2223-7747/13/6/895" target="_blank" rel="noopener">Valdés 2024 (review)</a> · <a href="https://doi.org/10.2307/3565592" target="_blank" rel="noopener">Búrquez 1989</a>'},
  b3:{g:'birds',n:'Nutrients stop cycling',h:'Songbirds <em>fertilise</em> the ground',ns:1,
@@ -1348,7 +1348,7 @@ function drawSim(b){schart.style.left=b.x+'px';schart.style.top=b.y+'px';schart.
 /* ---------- story pages ---------- */
 function storyPanel(k){const st=ST[k],G=GROUPS[st.g],i=G.keys.indexOf(k);
   $('storyP').innerHTML=`<h2>${st.h}</h2><p>${st.p}</p>${st.s?`<p class="s">${st.s}</p>`:''}${st.e?`<div class="econ"><b>${st.e[0]}</b>${st.e[1]}</div>`:''}<p class="src">${st.src}</p>`;
-  $('side').innerHTML=`<h4>${G.t}: three stories</h4>`+G.keys.map((q,j)=>`<button type="button" class="scard" data-s="${q}" ${q===k?'aria-current="true"':''}><small>Story ${j+1}</small><b>${ST[q].n}</b><span>${ST[q].p.split('. ')[0].replace(/<[^>]+>/g,'')}.</span></button>`).join('');
+  $('side').innerHTML=`<h4>${G.t}: three stories</h4>`+G.keys.map((q,j)=>`<button type="button" class="scard" data-s="${q}" ${q===k?'aria-current="true"':''}><small>Story ${j+1}</small><b>${ST[q].n}</b><span>${ST[q].p.split('. ')[0].replace(/<[^>]+>/g,'').replace(/\.$/, '')}.</span></button>`).join('');
   $('side').querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>{if(b.dataset.s!==sub)go('cons',b.dataset.s)});
   $('mlab').textContent=st.rl;$('mill').hidden=!st.ill;$('sndBtn').hidden=!st.snd}
 function placeSlider(){const t=$('tsl');if(!sub){return}const gap=Math.max(28,W*0.03);
@@ -1388,7 +1388,7 @@ function birdPhrase(v,t,vol){const R=v.seed;if(v.kind==='trill'){const n=8+Math.
   else{let tt=t;const n=3+Math.floor(R()*5);for(let k=0;k<n;k++){const f=v.base*(0.75+R()*0.6),d=0.05+R()*0.12;tone(tt,f,f*(0.55+R()*1.1),d,vol,v.pan);tt+=d+0.03+R()*0.05}}}
 function batClick(t,f,vol,pan){tone(t,f*1.6,f,0.009,vol,pan,'triangle')}
 function soundTick(){const c=SND.ctx;if(!c||!SND.on)return;const t=c.currentTime;
-  if(SND.kind==='bird'){const life=1+BIRD5[state.mc]/100;const active=Math.max(life>0.2?1:0,Math.round(BIRDS.length*Math.pow(life,8.0)));
+  if(SND.kind==='bird'){const life=1+BIRD5[state.mc]/100;const active=Math.max(life>0.2?1:0,Math.round(BIRDS.length*Math.pow(life,5.0)));
     BIRDS.forEach((v,k)=>{if(k>=active)return;if(t>=v.next){birdPhrase(v,t+0.05,0.03+0.06*life,v.pan);v.next=t+(0.5+v.seed()*1.7)/Math.max(.25,life)}})}
   if(SND.kind==='bat'){const life=1-state.mc/100*0.9;const n=Math.max(1,Math.round(3*life));
     for(let k=0;k<n;k++){const b=SND.bats[k]||(SND.bats[k]={next:0,pan:(k-1)*0.6,f:1400+k*350,buzz:0});
