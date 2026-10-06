@@ -1374,7 +1374,7 @@ const tip=$('tip');let tipQ=null,tipAck=false; // the slider tip shows until it 
 function placeTip(){if(!tipQ)return;const r=$('wedge').getBoundingClientRect();if(!r.width){hideTip();return}
   $('tipB').innerHTML=tipQ;const tw=Math.min(300,innerWidth-24);const ax=r.left+state.mc/100*r.width;const x=Math.max(12,Math.min(innerWidth-tw-12,ax-40));
   tip.style.left=x+'px';tip.style.top=(r.bottom+16)+'px';tip.style.setProperty('--tx',Math.max(10,Math.min(tw-22,ax-x-6))+'px');tip.style.setProperty('--ty','-6px');tip.classList.add('on')}
-const TIP0='<b>How to use the slider:</b> drag along the wedge from lots of moths to none and watch what changes, or press Show me to apply the 41% drop seen at UK urban traps.';
+const TIP0='<b>How to use the slider:</b> drag along the wedge from lots of moths to none and watch what changes, or press "Show me" to apply the 41% drop seen at UK urban traps.';
 function showTip(k){const st=ST[k];if(tipAck||st.ns)return;tipQ=TIP0;placeTip()}
 function hideTip(){tip.classList.remove('on');tipQ=null}
 function ackTip(){tipAck=true;hideTip()}
