@@ -169,11 +169,11 @@ nav button[aria-current] i{color:#a8a59c}
 
 .tsl{position:absolute;z-index:5;display:flex;flex-direction:column;gap:8px;opacity:0;visibility:hidden;transition:opacity .5s,visibility 0s .5s}
 .tsl.on{opacity:1;visibility:visible;transition:opacity .7s .3s,visibility 0s}
-.tsl .top{display:flex;align-items:baseline;gap:12px;margin-top:22px}
-.tsl .top b{font-size:28px;font-weight:700;letter-spacing:-.03em;color:var(--orange);font-variant-numeric:tabular-nums;line-height:1;font-stretch:110%}
+.tsl .top{display:flex;align-items:baseline;gap:0;margin-top:22px}
+.tsl .top b{font-size:28px;font-weight:700;letter-spacing:-.03em;color:var(--orange);font-variant-numeric:tabular-nums;line-height:1;font-stretch:110%;text-align:right;flex:none}
 .tsl .top span{font-size:13.5px;color:var(--mute)}
-.tsl .top #mlab{font-size:28px;font-weight:700;letter-spacing:-.03em;color:var(--orange);line-height:1;margin-left:78px}
-.tsl .top .ill{font-size:11.5px;color:var(--mute);background:var(--soft);border-radius:6px;padding:3px 7px}
+.tsl .top #mlab{font-size:28px;font-weight:700;letter-spacing:-.03em;color:var(--orange);line-height:1;margin-left:.3em}
+.tsl .top .ill{font-size:11.5px;color:var(--mute);background:var(--soft);border-radius:6px;padding:3px 7px;margin-left:12px}
 .snd{position:absolute;z-index:6;display:inline-flex;align-items:center;justify-content:center;width:132px;gap:8px;white-space:nowrap;background:var(--soft);border:0;border-radius:10px;padding:8px 13px;font-size:13px;font-weight:600;cursor:pointer;opacity:0;transition:opacity .6s .4s}
 .snd.on{opacity:1}
 .snd svg{width:17px;height:17px}
@@ -391,7 +391,7 @@ footer{display:flex;justify-content:space-between;align-items:center;padding-blo
   .ccard span.d{display:none}
 }
 @media (max-width:640px){
-  .tsl .top b,.tsl .top #mlab{font-size:24px}.tsl .top #mlab{margin-left:12px}
+  .tsl .top b,.tsl .top #mlab{font-size:24px}
   .stats{gap:10px}
   .ghead p{font-size:13.5px}
   .mjstats{grid-template-columns:1fr 1fr}
@@ -1354,8 +1354,11 @@ function storyPanel(k){const st=ST[k],G=GROUPS[st.g],i=G.keys.indexOf(k);
   $('side').innerHTML=`<h4>${G.t}: three stories</h4>`+G.keys.map((q,j)=>`<button type="button" class="scard" data-s="${q}" ${q===k?'aria-current="true"':''}><small>Story ${j+1}</small><b>${ST[q].n}</b><span>${ST[q].p.split('. ')[0].replace(/<[^>]+>/g,'').replace(/\.$/, '')}.</span></button>`).join('');
   $('side').querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>{if(b.dataset.s!==sub)go('cons',b.dataset.s)});
   $('mlab').textContent=st.rl;$('mill').hidden=!st.ill;$('sndBtn').hidden=!st.snd}
+/* the readout is as wide as its widest value and right-aligned, so the label beside it stays put as the slider moves */
+function sizeRead(){const b=$('mread'),st=sub&&ST[sub];b.style.minWidth='';if(!st||st.ns)return;const t=b.textContent;let w=0;
+  for(let v=0;v<=100;v++){b.textContent=st.r(v);w=Math.max(w,b.getBoundingClientRect().width)}b.textContent=t;b.style.minWidth=Math.ceil(w)+'px'}
 function placeSlider(){const t=$('tsl');if(!sub){return}const gap=Math.max(28,W*0.03);
-  if(stacked){Object.assign(t.style,{left:'0px',top:'2px',width:W+'px'})}else Object.assign(t.style,{left:(pw+gap)+'px',top:'4px',width:(W-pw-sw-2*gap)+'px'});drawWedge()}
+  if(stacked){Object.assign(t.style,{left:'0px',top:'2px',width:W+'px'})}else Object.assign(t.style,{left:(pw+gap)+'px',top:'4px',width:(W-pw-sw-2*gap)+'px'});sizeRead();drawWedge()}
 function drawWedge(){const sv=$('wedge');const r=sv.getBoundingClientRect();const w=r.width,h=r.height;if(!w)return;const v=state.mc/100,x=v*w;const ac=getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()||COL.blue;
   const top=y=>h/2-(h/2)*(1-y),bot=y=>h/2+(h/2)*(1-y);
   /* solid wedge: tall at "lots of moths", a point at "none". Left of the handle (moths lost) turns grey. */
